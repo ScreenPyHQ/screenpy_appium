@@ -50,7 +50,7 @@ or
 
 Documentation
 ----------
-Please check out the [Read The Docs documentation](https://screenpy-docs.readthedocs.io/en/latest/) for the latest information about this module!
+Please check out the [Read The Docs documentation](https://screenpy-appium-docs.readthedocs.io/en/latest/) for the latest information about this module!
 
 
 Contributing
