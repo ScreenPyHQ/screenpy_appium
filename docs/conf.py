@@ -19,7 +19,7 @@ sys.path.insert(0, os.path.abspath("../"))
 
 from screenpy_appium.__version__ import __version__  # noqa: need the path first
 
-autodoc_mock_imports = ["Appium-Python-Client", "screenpy"]
+autodoc_mock_imports = ["appium", "screenpy"]
 
 
 # -- Project information -----------------------------------------------------
