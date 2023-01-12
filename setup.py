@@ -3,7 +3,7 @@ from os import path
 from setuptools import find_packages, setup
 
 requires = [
-    "Appium-Python-Client>=2.0,<3.0",
+    "Appium-Python-Client>=2.0,",
     "screenpy>=4.0",
 ]
 
