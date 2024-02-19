@@ -17,7 +17,7 @@ class ExpectedDescriptions:
 
 def _assert_descriptions(
     obj: BaseResolution, element: WebElement, expected: ExpectedDescriptions
-):
+) -> None:
     describe_to = StringDescription()
     describe_match = StringDescription()
     describe_mismatch = StringDescription()
@@ -35,12 +35,12 @@ def _assert_descriptions(
 
 
 class TestIsTappable:
-    def test_can_be_instantiated(self):
+    def test_can_be_instantiated(self) -> None:
         ic = IsTappable()
 
         assert isinstance(ic, IsTappable)
 
-    def test_matches_a_Tapable_element(self):
+    def test_matches_a_Tapable_element(self) -> None:
         element = mock.Mock(spec=WebElement)
         element.is_enabled.return_value = True
         element.is_displayed.return_value = True
@@ -48,7 +48,7 @@ class TestIsTappable:
 
         assert ic._matches(element)
 
-    def test_does_not_match_untapable_element(self):
+    def test_does_not_match_untapable_element(self) -> None:
         invisible_element = mock.Mock(spec=WebElement)
         invisible_element.is_displayed.return_value = False
         invisible_element.is_enabled.return_value = True
@@ -62,7 +62,7 @@ class TestIsTappable:
         assert not ic._matches(inactive_element)
 
     @mock.patch("appium.webdriver.webelement.WebElement", spec=WebElement)
-    def test_descriptions(self, element):
+    def test_descriptions(self, element: mock.MagicMock) -> None:
         expected = ExpectedDescriptions(
             describe_to="the element is enabled/tappable",
             describe_match="it was enabled/tappable",
@@ -74,19 +74,19 @@ class TestIsTappable:
 
 
 class TestIsVisible:
-    def test_can_be_instantiated(self):
+    def test_can_be_instantiated(self) -> None:
         iv = IsVisible()
 
         assert isinstance(iv, IsVisible)
 
-    def test_matches_a_visible_element(self):
+    def test_matches_a_visible_element(self) -> None:
         element = mock.Mock(spec=WebElement)
         element.is_displayed.return_value = True
         iv = IsVisible()
 
         assert iv._matches(element)
 
-    def test_does_not_match_invisible_element(self):
+    def test_does_not_match_invisible_element(self) -> None:
         invisible_element = mock.Mock(spec=WebElement)
         invisible_element.is_displayed.return_value = False
         iv = IsVisible()
@@ -94,7 +94,7 @@ class TestIsVisible:
         assert not iv._matches(None)  # element was not found by Element()
         assert not iv._matches(invisible_element)
 
-    def test_descriptions(self):
+    def test_descriptions(self) -> None:
         element = mock.Mock(spec=WebElement)
         expected = ExpectedDescriptions(
             describe_to="the element is visible",
