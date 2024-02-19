@@ -22,7 +22,7 @@
 
 import importlib.metadata
 
-metadata = importlib.metadata.metadata("screenpy_adapter_allure")
+metadata = importlib.metadata.metadata("screenpy_appium")
 
 __title__ = metadata["Name"]
 __description__ = metadata["Summary"]
