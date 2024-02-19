@@ -67,7 +67,7 @@ class TestIsTappable:
             describe_to="the element is enabled/tappable",
             describe_match="it was enabled/tappable",
             describe_mismatch="was not enabled/tappable",
-            describe_none="was not even present"
+            describe_none="was not even present",
         )
 
         _assert_descriptions(IsTappable(), element, expected)
@@ -100,7 +100,7 @@ class TestIsVisible:
             describe_to="the element is visible",
             describe_match="it was visible",
             describe_mismatch="was not visible",
-            describe_none="was not even present"
+            describe_none="was not even present",
         )
 
         _assert_descriptions(IsVisible(), element, expected)
