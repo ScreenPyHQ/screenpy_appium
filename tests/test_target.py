@@ -1,5 +1,4 @@
 import pytest
-
 from appium.webdriver.common.appiumby import AppiumBy
 from appium.webdriver.webdriver import WebDriverException
 from screenpy import Actor

@@ -1,26 +1,23 @@
 from unittest import mock
 
 import pytest
-from screenpy import Actor
-
-from screenpy.exceptions import UnableToAnswer
 from appium.webdriver.webdriver import WebDriverException
+from screenpy import Actor
+from screenpy.exceptions import UnableToAnswer
 
 from screenpy_appium import Target
 from screenpy_appium.abilities import UseAnAndroidDevice
-from screenpy_appium.questions import (
-    Attribute,
-    Element,
-    List,
-    Number,
-    Text,
-)
+from screenpy_appium.questions import Attribute, Element, List, Number, Text
+from tests.useful_mocks import get_mock_target_class
+
+FakeTarget = get_mock_target_class()
+TARGET = FakeTarget()
 
 
 class TestAttribute:
     def test_can_be_instantiated(self) -> None:
         a1 = Attribute("")
-        a2 = Attribute("").of_the(None)
+        a2 = Attribute("").of_the(TARGET)
 
         assert isinstance(a1, Attribute)
         assert isinstance(a2, Attribute)
@@ -30,7 +27,7 @@ class TestAttribute:
             Attribute("").answered_by(AndroidTester)
 
     def test_of_all_sets_multi(self) -> None:
-        assert Attribute("").of_all(None).multi
+        assert Attribute("").of_all(TARGET).multi
 
     def test_uses_get_attribute(self, AndroidTester: Actor) -> None:
         fake_target = Target.the("fake").located_by("//html")

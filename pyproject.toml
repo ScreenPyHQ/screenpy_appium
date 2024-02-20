@@ -59,7 +59,7 @@ select = [
 #    "FBT",  # flake8-boolean-trap
 #    "FIX",  # flake8-fixme
 #    "FLY",  # flynt
-#    "I",  # isort
+    "I",  # isort
 #    "ICN",  # flake8-import-conventions
 #    "ISC",  # flake8-implicit-str-concat
 #    "PGH",  # pygrep-hooks
@@ -73,7 +73,7 @@ select = [
 #    "SIM",  # flake8-simplify
 #    "T10",  # flake8-debugger
 #    "T20",  # flake8-print
-#    "TCH",  # flake8-type-checking
+    "TCH",  # flake8-type-checking
 #    "TRY",  # tryceratops
 #    "UP",  # python upgrade
 #    "W",  # pycodestyle warning

@@ -2,13 +2,9 @@ from unittest import mock
 
 import pytest
 from screenpy import Actor
-
 from screenpy.exceptions import UnableToAct
-from screenpy_appium.actions import (
-    Clear,
-    Enter,
-    Tap,
-)
+
+from screenpy_appium.actions import Clear, Enter, Tap
 
 
 def get_mocked_target_and_element() -> tuple[mock.Mock, mock.Mock]:

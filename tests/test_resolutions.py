@@ -1,10 +1,11 @@
+from dataclasses import dataclass
 from unittest import mock
 
-from screenpy.resolutions.base_resolution import BaseResolution
-from screenpy_appium.resolutions import IsTappable, IsVisible
 from appium.webdriver.webelement import WebElement
 from hamcrest.core.string_description import StringDescription
-from dataclasses import dataclass
+from screenpy.resolutions.base_resolution import BaseResolution
+
+from screenpy_appium.resolutions import IsTappable, IsVisible
 
 
 @dataclass
