@@ -1,13 +1,17 @@
-"""
-Tap on an element.
-"""
+"""Tap on an element."""
+
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 
 from appium.webdriver.webdriver import WebDriverException
-from screenpy.actor import Actor
 from screenpy.exceptions import DeliveryError
 from screenpy.pacing import beat
 
-from ..target import Target
+if TYPE_CHECKING:
+    from screenpy.actor import Actor
+
+    from ..target import Target
 
 
 class Tap:
@@ -27,7 +31,7 @@ class Tap:
     """
 
     @staticmethod
-    def on_the(target: Target) -> "Tap":
+    def on_the(target: Target) -> Tap:
         """Target the element to tap on."""
         return Tap(target)
 

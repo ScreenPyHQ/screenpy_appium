@@ -1,15 +1,18 @@
-"""
-Investigate an element on the browser page.
-"""
+"""Investigate an element on the browser page."""
 
-from typing import Optional
+from __future__ import annotations
 
-from screenpy import Actor
+from typing import TYPE_CHECKING
+
 from screenpy.pacing import beat
-from selenium.webdriver.remote.webelement import WebElement
 
 from ..exceptions import TargetingError
-from ..target import Target
+
+if TYPE_CHECKING:
+    from screenpy import Actor
+    from selenium.webdriver.remote.webelement import WebElement
+
+    from ..target import Target
 
 
 class Element:
@@ -29,7 +32,7 @@ class Element:
         return f"The {self.target}."
 
     @beat("{} inspects the {target}.")
-    def answered_by(self, the_actor: Actor) -> Optional[WebElement]:
+    def answered_by(self, the_actor: Actor) -> WebElement | None:
         """Direct the Actor to find the element."""
         try:
             return self.target.found_by(the_actor)

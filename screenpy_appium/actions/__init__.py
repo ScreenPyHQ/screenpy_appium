@@ -1,6 +1,4 @@
-"""
-Actions an Actor can perform in a mobile application.
-"""
+"""Actions an Actor can perform in a mobile application."""
 
 from .clear import Clear
 from .enter import Enter

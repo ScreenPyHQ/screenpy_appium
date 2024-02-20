@@ -1,11 +1,15 @@
-"""
-Investigate how many of an element are present on the page.
-"""
+"""Investigate how many of an element are present on the page."""
 
-from screenpy import Actor
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
+
 from screenpy.pacing import beat
 
-from ..target import Target
+if TYPE_CHECKING:
+    from screenpy import Actor
+
+    from ..target import Target
 
 
 class Number:
@@ -24,7 +28,7 @@ class Number:
     """
 
     @classmethod
-    def of(cls, target: Target) -> "Number":
+    def of(cls, target: Target) -> Number:
         """Target the element to be counted."""
         return cls(target=target)
 

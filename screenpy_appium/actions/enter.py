@@ -1,15 +1,19 @@
-"""
-Enter text into an input field, or press keys.
-"""
+"""Enter text into an input field, or press keys."""
 
-from typing import Optional
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 
 from appium.webdriver.webdriver import WebDriverException
-from screenpy import Actor
 from screenpy.exceptions import DeliveryError, UnableToAct
 from screenpy.pacing import beat
 
-from ..target import Target
+from ..common import pos_args_deprecated
+
+if TYPE_CHECKING:
+    from screenpy import Actor
+
+    from ..target import Target
 
 
 class Enter:
@@ -26,26 +30,27 @@ class Enter:
         )
     """
 
-    target: Optional[Target]
+    target: Target | None
 
     @staticmethod
-    def the_text(text: str) -> "Enter":
+    def the_text(text: str) -> Enter:
         """Provide the text to enter into the field."""
         return Enter(text)
 
     the_keys = the_text
 
     @staticmethod
-    def the_secret(text: str) -> "Enter":
+    def the_secret(text: str) -> Enter:
         """
-        Provide the text to enter into the field, but mark that the text
-        should be masked in the log. The text will appear as "[CENSORED]".
+        Provide the text to enter into the field, but mask it in logging.
+
+        The text will appear as "[CENSORED]".
         """
         return Enter(text, mask=True)
 
     the_password = the_secret
 
-    def into_the(self, target: Target) -> "Enter":
+    def into_the(self, target: Target) -> Enter:
         """Target the element to enter text into."""
         self.target = target
         return self
@@ -60,10 +65,11 @@ class Enter:
     def perform_as(self, the_actor: Actor) -> None:
         """Direct the Actor to enter the text into the element."""
         if self.target is None:
-            raise UnableToAct(
+            msg = (
                 "Target was not supplied for Enter. Provide a Target by using either "
                 "the .into(), .into_the(), or .on() method."
             )
+            raise UnableToAct(msg)
 
         element = self.target.found_by(the_actor)
 
@@ -76,7 +82,8 @@ class Enter:
             )
             raise DeliveryError(msg) from e
 
-    def __init__(self, text: str, mask: bool = False) -> None:
+    @pos_args_deprecated("mask")
+    def __init__(self, text: str, mask: bool = False) -> None:  # noqa: FBT001, FBT002
         self.text = text
         self.target = None
 

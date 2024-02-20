@@ -1,6 +1,4 @@
-"""
-Abilities which enable an Actor to use mobile applications.
-"""
+"""Abilities which enable an Actor to use mobile applications."""
 
 from .use_a_mobile_device import UseAMobileDevice
 from .use_an_android_device import UseAnAndroidDevice

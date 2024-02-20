@@ -1,23 +1,26 @@
 """
-A matcher that matches a visible element. For example:
+A matcher that matches a visible element.
+
+For example:
 
     assert_that(driver.find_element_by_id("search"), is_visible_element())
 """
 
+from __future__ import annotations
 
-from typing import Optional
+from typing import TYPE_CHECKING, Optional
 
 from appium.webdriver.webelement import WebElement
 from hamcrest.core.base_matcher import BaseMatcher
-from hamcrest.core.description import Description
+
+if TYPE_CHECKING:
+    from hamcrest.core.description import Description
 
 
 class IsVisibleElement(BaseMatcher[Optional[WebElement]]):
-    """
-    Matches an element whose ``is_displayed`` method returns True.
-    """
+    """Matches an element whose ``is_displayed`` method returns True."""
 
-    def _matches(self, item: Optional[WebElement]) -> bool:
+    def _matches(self, item: WebElement | None) -> bool:
         """Whether the element is visible."""
         if item is None:
             return False
@@ -28,13 +31,13 @@ class IsVisibleElement(BaseMatcher[Optional[WebElement]]):
         description.append_text("the element is visible")
 
     def describe_match(
-        self, _: Optional[WebElement], match_description: Description
+        self, _: WebElement | None, match_description: Description
     ) -> None:
         """Describe the passing case, when it is unexpected."""
         match_description.append_text("it was visible")
 
     def describe_mismatch(
-        self, item: Optional[WebElement], mismatch_description: Description
+        self, item: WebElement | None, mismatch_description: Description
     ) -> None:
         """Describe the failing case."""
         if item is None:

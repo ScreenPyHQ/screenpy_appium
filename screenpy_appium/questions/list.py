@@ -1,14 +1,16 @@
-"""
-Investigate one or more elements.
-"""
+"""Investigate one or more elements."""
 
-from typing import List as ListType
+from __future__ import annotations
 
-from screenpy import Actor
+from typing import TYPE_CHECKING
+
 from screenpy.pacing import beat
-from selenium.webdriver.remote.webdriver import WebElement
 
-from ..target import Target
+if TYPE_CHECKING:
+    from appium.webdriver import WebElement
+    from screenpy import Actor
+
+    from ..target import Target
 
 
 class List:
@@ -24,7 +26,7 @@ class List:
     """
 
     @staticmethod
-    def of_the(target: Target) -> "List":
+    def of_the(target: Target) -> List:
         """Target the element(s) to list."""
         return List(target)
 
@@ -35,7 +37,7 @@ class List:
         return f"The list of {self.target}."
 
     @beat("{} lists off the {target}.")
-    def answered_by(self, the_actor: Actor) -> ListType[WebElement]:
+    def answered_by(self, the_actor: Actor) -> list[WebElement]:
         """Direct the Actor to rattle off the specified elements."""
         return self.target.all_found_by(the_actor)
 

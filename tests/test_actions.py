@@ -1,16 +1,23 @@
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from unittest import mock
 
 import pytest
-
 from screenpy.exceptions import UnableToAct
-from screenpy_appium.actions import (
-    Clear,
-    Enter,
-    Tap,
-)
+
+from screenpy_appium.actions import Clear, Enter, Tap
+from tests.useful_mocks import get_mock_target_class
+
+if TYPE_CHECKING:
+    from screenpy import Actor
 
 
-def get_mocked_target_and_element():
+FakeTarget = get_mock_target_class()
+TARGET = FakeTarget()
+
+
+def get_mocked_target_and_element() -> tuple[mock.Mock, mock.Mock]:
     """Get a mocked target which returns a mocked element."""
     target = mock.Mock()
     element = mock.Mock()
@@ -20,14 +27,14 @@ def get_mocked_target_and_element():
 
 
 class TestClear:
-    def test_can_be_instantiated(self):
-        c1 = Clear(None)
-        c2 = Clear.the_text_from_the(None)
+    def test_can_be_instantiated(self) -> None:
+        c1 = Clear(TARGET)
+        c2 = Clear.the_text_from_the(TARGET)
 
         assert isinstance(c1, Clear)
         assert isinstance(c2, Clear)
 
-    def test_perform_clear(self, AndroidTester, IOSTester):
+    def test_perform_clear(self, AndroidTester: Actor, IOSTester: Actor) -> None:
         android_target, android_element = get_mocked_target_and_element()
         ios_target, ios_element = get_mocked_target_and_element()
 
@@ -41,13 +48,13 @@ class TestClear:
 
 
 class TestEnter:
-    def test_can_be_instantiated(self):
+    def test_can_be_instantiated(self) -> None:
         e1 = Enter.the_text("test")
-        e2 = Enter.the_text("test").into(None)
-        e3 = Enter.the_keys("test").into(None)
-        e4 = Enter.the_text("test").into_the(None)
-        e5 = Enter.the_text("test").on(None)
-        e6 = Enter.the_keys("test").on(None)
+        e2 = Enter.the_text("test").into(TARGET)
+        e3 = Enter.the_keys("test").into(TARGET)
+        e4 = Enter.the_text("test").into_the(TARGET)
+        e5 = Enter.the_text("test").on(TARGET)
+        e6 = Enter.the_keys("test").on(TARGET)
         e7 = Enter.the_secret("test")
 
         assert isinstance(e1, Enter)
@@ -58,7 +65,7 @@ class TestEnter:
         assert isinstance(e6, Enter)
         assert isinstance(e7, Enter)
 
-    def test_secret_masks_text(self):
+    def test_secret_masks_text(self) -> None:
         """the_secret sets text_to_log to [CENSORED]"""
         text = "Keep it a secret to everybody"
         e = Enter.the_secret(text)
@@ -66,7 +73,7 @@ class TestEnter:
         assert e.text == text
         assert e.text_to_log == "[CENSORED]"
 
-    def test_perform_enter(self, AndroidTester):
+    def test_perform_enter(self, AndroidTester: Actor) -> None:
         target, element = get_mocked_target_and_element()
         text = 'Speak "Friend" and Enter'
 
@@ -75,20 +82,20 @@ class TestEnter:
         target.found_by.assert_called_once_with(AndroidTester)
         element.send_keys.assert_called_once_with(text)
 
-    def test_perform_without_target_raises(self, AndroidTester):
+    def test_perform_without_target_raises(self, AndroidTester: Actor) -> None:
         with pytest.raises(UnableToAct):
             Enter.the_text("woops!").perform_as(AndroidTester)
 
 
 class TestTap:
-    def test_can_be_instantiated(self):
-        c1 = Tap.on(None)
-        c2 = Tap.on_the(None)
+    def test_can_be_instantiated(self) -> None:
+        c1 = Tap.on(TARGET)
+        c2 = Tap.on_the(TARGET)
 
         assert isinstance(c1, Tap)
         assert isinstance(c2, Tap)
 
-    def test_perform_click(self, AndroidTester, IOSTester):
+    def test_perform_click(self, AndroidTester: Actor, IOSTester: Actor) -> None:
         android_target, android_element = get_mocked_target_and_element()
         ios_target, ios_element = get_mocked_target_and_element()
 

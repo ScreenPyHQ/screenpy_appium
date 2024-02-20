@@ -1,10 +1,13 @@
-"""
-Enable an actor to use an Android device.
-"""
+"""Enable an actor to use an Android device."""
 
-from appium.webdriver import Remote
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 
 from .use_a_mobile_device import UseAMobileDevice
+
+if TYPE_CHECKING:
+    from appium.webdriver import Remote
 
 
 class UseAnAndroidDevice(UseAMobileDevice):
@@ -22,7 +25,7 @@ class UseAnAndroidDevice(UseAMobileDevice):
     driver: Remote
 
     @classmethod
-    def using(cls, driver: Remote) -> "UseAnAndroidDevice":
+    def using(cls, driver: Remote) -> UseAnAndroidDevice:
         """Supply the Appium driver, connected to an Android device."""
         return cls(driver)
 
@@ -31,6 +34,7 @@ class UseAnAndroidDevice(UseAMobileDevice):
         self.driver.quit()
 
     def __repr__(self) -> str:
+        """Represents ability to use android driver."""
         return "Use an Android device"
 
     def __init__(self, driver: Remote) -> None:
