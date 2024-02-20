@@ -55,7 +55,7 @@ class Text:
             return [e.text for e in self.target.all_found_by(the_actor)]
         return self.target.found_by(the_actor).text
 
-    @pos_args_deprecated("mask")
+    @pos_args_deprecated("multi")
     def __init__(
         self, target: Target, multi: bool = False  # noqa: FBT001, FBT002
     ) -> None:
