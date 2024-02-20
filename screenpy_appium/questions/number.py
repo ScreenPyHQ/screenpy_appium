@@ -28,7 +28,7 @@ class Number:
     """
 
     @classmethod
-    def of(cls, target: Target) -> "Number":
+    def of(cls, target: Target) -> Number:
         """Target the element to be counted."""
         return cls(target=target)
 

@@ -31,7 +31,7 @@ class Tap:
     """
 
     @staticmethod
-    def on_the(target: Target) -> "Tap":
+    def on_the(target: Target) -> Tap:
         """Target the element to tap on."""
         return Tap(target)
 

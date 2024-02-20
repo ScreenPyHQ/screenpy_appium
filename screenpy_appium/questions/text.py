@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, List, Union
+from typing import TYPE_CHECKING
 
 from screenpy.pacing import beat
 
@@ -33,14 +33,14 @@ class Text:
     """
 
     @staticmethod
-    def of_the(target: Target) -> "Text":
+    def of_the(target: Target) -> Text:
         """Target the element to extract the text from."""
         return Text(target=target)
 
     of = of_the_first_of_the = of_the
 
     @staticmethod
-    def of_all(multi_target: Target) -> "Text":
+    def of_all(multi_target: Target) -> Text:
         """Target the elements, plural, to extract the text from."""
         return Text(target=multi_target, multi=True)
 
@@ -49,7 +49,7 @@ class Text:
         return f"The text from the {self.target}."
 
     @beat("{} reads the text from the {target}.")
-    def answered_by(self, the_actor: Actor) -> Union[str, List[str]]:
+    def answered_by(self, the_actor: Actor) -> str | list[str]:
         """Direct the Actor to read off the text of the element(s)."""
         if self.multi:
             return [e.text for e in self.target.all_found_by(the_actor)]

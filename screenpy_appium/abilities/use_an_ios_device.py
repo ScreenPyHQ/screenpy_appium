@@ -25,7 +25,7 @@ class UseAnIOSDevice(UseAMobileDevice):
     driver: Remote
 
     @classmethod
-    def using(cls, driver: Remote) -> "UseAnIOSDevice":
+    def using(cls, driver: Remote) -> UseAnIOSDevice:
         """Supply the Appium driver, connected to an iOS device."""
         return cls(driver)
 

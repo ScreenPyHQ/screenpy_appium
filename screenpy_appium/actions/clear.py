@@ -27,7 +27,7 @@ class Clear:
     """
 
     @staticmethod
-    def the_text_from_the(target: Target) -> "Clear":
+    def the_text_from_the(target: Target) -> Clear:
         """Specify the Target from which to clear the text."""
         return Clear(target)
 

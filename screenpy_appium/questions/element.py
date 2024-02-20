@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Optional
+from typing import TYPE_CHECKING
 
 from screenpy.pacing import beat
 
@@ -32,7 +32,7 @@ class Element:
         return f"The {self.target}."
 
     @beat("{} inspects the {target}.")
-    def answered_by(self, the_actor: Actor) -> Optional[WebElement]:
+    def answered_by(self, the_actor: Actor) -> WebElement | None:
         """Direct the Actor to find the element."""
         try:
             return self.target.found_by(the_actor)

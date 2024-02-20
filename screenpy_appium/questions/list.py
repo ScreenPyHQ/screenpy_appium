@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, List as ListType
+from typing import TYPE_CHECKING
 
 from screenpy.pacing import beat
 
@@ -26,7 +26,7 @@ class List:
     """
 
     @staticmethod
-    def of_the(target: Target) -> "List":
+    def of_the(target: Target) -> List:
         """Target the element(s) to list."""
         return List(target)
 
@@ -37,7 +37,7 @@ class List:
         return f"The list of {self.target}."
 
     @beat("{} lists off the {target}.")
-    def answered_by(self, the_actor: Actor) -> ListType[WebElement]:
+    def answered_by(self, the_actor: Actor) -> list[WebElement]:
         """Direct the Actor to rattle off the specified elements."""
         return self.target.all_found_by(the_actor)
 

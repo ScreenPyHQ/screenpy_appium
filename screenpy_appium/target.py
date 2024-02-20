@@ -8,7 +8,7 @@ Otherwise, the default is accessibility ID.
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Iterator, List, Optional, Tuple, Union
+from typing import TYPE_CHECKING, Iterator
 
 from appium.webdriver.common.appiumby import AppiumBy
 from appium.webdriver.webdriver import WebDriverException
@@ -39,14 +39,14 @@ class Target:
         Target.the('"Log In" button').located((AppiumBy.NAME, "login"))
     """
 
-    locator: Optional[Tuple[str, str]]
+    locator: tuple[str, str] | None
 
     @classmethod
-    def the(cls, description: str) -> "Target":
+    def the(cls, description: str) -> Target:
         """Provide a human-readable description for the element."""
         return cls(description)
 
-    def located_by(self, locator: Union[Tuple[str, str], str]) -> "Target":
+    def located_by(self, locator: tuple[str, str] | str) -> Target:
         """Set the locator for this Target.
 
         Possible values for locator:
@@ -66,7 +66,7 @@ class Target:
 
     located = located_by
 
-    def get_locator(self) -> Tuple[str, str]:
+    def get_locator(self) -> tuple[str, str]:
         """Return the stored locator.
 
         Raises:
@@ -89,7 +89,7 @@ class Target:
             msg = f"{e} raised while trying to find {self}."
             raise TargetingError(msg) from e
 
-    def all_found_by(self, the_actor: Actor) -> List[WebElement]:
+    def all_found_by(self, the_actor: Actor) -> list[WebElement]:
         """Retrieve a list of |WebElement| objects as viewed by the Actor."""
         driver = the_actor.ability_to(UseAMobileDevice).driver
         try:
