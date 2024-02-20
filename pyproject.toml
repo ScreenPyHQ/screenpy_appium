@@ -46,15 +46,15 @@ extend-exclude = [
 select = [
     "A",  # flake8-builtins
     "ANN",  # flake8-annotations
-#    "ARG",  # flake8-unused-arguments
-#    "B",  # flake8-bugbear
-#    "BLE",  # flake8-blind-except
+    "ARG",  # flake8-unused-arguments
+    "B",  # flake8-bugbear
+    "BLE",  # flake8-blind-except
 #    "C4",  # flake8-comprehensions
 #    "D",  # pydocstyle
-#    "E",  # pycodestyle error
+    "E",  # pycodestyle error
 #    "EM",  # flake8-errmsg
 #    "ERA",  # eradicate
-#    "F",  # Pyflakes
+    "F",  # Pyflakes
 #    "FA",  # flake8-future-annotations
 #    "FBT",  # flake8-boolean-trap
 #    "FIX",  # flake8-fixme
@@ -64,7 +64,7 @@ select = [
 #    "ISC",  # flake8-implicit-str-concat
 #    "PGH",  # pygrep-hooks
 #    "PIE",  # flake8-pie
-#    "PL",  # pylint
+    "PL",  # pylint
 #    "PT",  # flake8-pytest-style
 #    "Q",  # flake8-quotes
 #    "RET",  # flake8-return
@@ -76,7 +76,7 @@ select = [
     "TCH",  # flake8-type-checking
 #    "TRY",  # tryceratops
 #    "UP",  # python upgrade
-#    "W",  # pycodestyle warning
+    "W",  # pycodestyle warning
 #    "YTT",  # flake8-2020
 
     # we would like these someday, but not yet
