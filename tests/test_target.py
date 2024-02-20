@@ -4,8 +4,8 @@ from appium.webdriver.webdriver import WebDriverException
 from screenpy import Actor
 
 from screenpy_appium import Target
-from screenpy_appium.abilities import UseAnAndroidDevice
 from screenpy_appium.exceptions import TargetingError
+from tests.useful_mocks import get_mocked_browser
 
 
 def test_can_be_instantiated() -> None:
@@ -58,13 +58,13 @@ def test_found_by(AndroidTester: Actor) -> None:
     test_locator = (AppiumBy.NAME, "eggs")
     Target.the("test").located(test_locator).found_by(AndroidTester)
 
-    mocked_driver = AndroidTester.ability_to(UseAnAndroidDevice).driver
+    mocked_driver = get_mocked_browser(AndroidTester)
     mocked_driver.find_element.assert_called_once_with(*test_locator)
 
 
 def test_found_by_raises(AndroidTester: Actor) -> None:
     test_name = "frobnosticator"
-    mocked_driver = AndroidTester.ability_to(UseAnAndroidDevice).driver
+    mocked_driver = get_mocked_browser(AndroidTester)
     mocked_driver.find_element.side_effect = WebDriverException
 
     with pytest.raises(TargetingError) as excinfo:
@@ -77,13 +77,13 @@ def test_all_found_by(AndroidTester: Actor) -> None:
     test_locator = (AppiumBy.NAME, "baked beans")
     Target.the("test").located(test_locator).all_found_by(AndroidTester)
 
-    mocked_driver = AndroidTester.ability_to(UseAnAndroidDevice).driver
+    mocked_driver = get_mocked_browser(AndroidTester)
     mocked_driver.find_elements.assert_called_once_with(*test_locator)
 
 
 def test_all_found_by_raises(AndroidTester: Actor) -> None:
     test_name = "transmogrifier"
-    mocked_driver = AndroidTester.ability_to(UseAnAndroidDevice).driver
+    mocked_driver = get_mocked_browser(AndroidTester)
     mocked_driver.find_elements.side_effect = WebDriverException
 
     with pytest.raises(TargetingError) as excinfo:

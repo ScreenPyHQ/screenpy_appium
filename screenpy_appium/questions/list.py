@@ -7,8 +7,8 @@ from typing import TYPE_CHECKING
 from screenpy.pacing import beat
 
 if TYPE_CHECKING:
+    from appium.webdriver import WebElement
     from screenpy import Actor
-    from selenium.webdriver.remote.webdriver import WebElement
 
     from ..target import Target
 

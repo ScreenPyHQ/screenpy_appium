@@ -7,9 +7,14 @@ import pytest
 from screenpy.exceptions import UnableToAct
 
 from screenpy_appium.actions import Clear, Enter, Tap
+from tests.useful_mocks import get_mock_target_class
 
 if TYPE_CHECKING:
     from screenpy import Actor
+
+
+FakeTarget = get_mock_target_class()
+TARGET = FakeTarget()
 
 
 def get_mocked_target_and_element() -> tuple[mock.Mock, mock.Mock]:
@@ -23,8 +28,8 @@ def get_mocked_target_and_element() -> tuple[mock.Mock, mock.Mock]:
 
 class TestClear:
     def test_can_be_instantiated(self) -> None:
-        c1 = Clear(None)
-        c2 = Clear.the_text_from_the(None)
+        c1 = Clear(TARGET)
+        c2 = Clear.the_text_from_the(TARGET)
 
         assert isinstance(c1, Clear)
         assert isinstance(c2, Clear)
@@ -45,11 +50,11 @@ class TestClear:
 class TestEnter:
     def test_can_be_instantiated(self) -> None:
         e1 = Enter.the_text("test")
-        e2 = Enter.the_text("test").into(None)
-        e3 = Enter.the_keys("test").into(None)
-        e4 = Enter.the_text("test").into_the(None)
-        e5 = Enter.the_text("test").on(None)
-        e6 = Enter.the_keys("test").on(None)
+        e2 = Enter.the_text("test").into(TARGET)
+        e3 = Enter.the_keys("test").into(TARGET)
+        e4 = Enter.the_text("test").into_the(TARGET)
+        e5 = Enter.the_text("test").on(TARGET)
+        e6 = Enter.the_keys("test").on(TARGET)
         e7 = Enter.the_secret("test")
 
         assert isinstance(e1, Enter)
@@ -84,8 +89,8 @@ class TestEnter:
 
 class TestTap:
     def test_can_be_instantiated(self) -> None:
-        c1 = Tap.on(None)
-        c2 = Tap.on_the(None)
+        c1 = Tap.on(TARGET)
+        c2 = Tap.on_the(TARGET)
 
         assert isinstance(c1, Tap)
         assert isinstance(c2, Tap)
