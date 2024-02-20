@@ -31,4 +31,3 @@ class UseAMobileDevice:
 
     def forget(self) -> None:
         """Quit the attached driver."""
-        ...
