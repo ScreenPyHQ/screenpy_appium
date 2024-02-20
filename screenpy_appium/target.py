@@ -69,10 +69,11 @@ class Target:
             TargetingError: if no locator was set.
         """
         if self.locator is None:
-            raise TargetingError(
+            msg = (
                 f"Locator was not supplied to the {self} target. Make sure to use "
                 "either .located() or .located_by() to supply a locator."
             )
+            raise TargetingError(msg)
         return self.locator
 
     def found_by(self, the_actor: Actor) -> WebElement:
@@ -81,7 +82,8 @@ class Target:
         try:
             return driver.find_element(*self)
         except WebDriverException as e:
-            raise TargetingError(f"{e} raised while trying to find {self}.") from e
+            msg = f"{e} raised while trying to find {self}."
+            raise TargetingError(msg) from e
 
     def all_found_by(self, the_actor: Actor) -> List[WebElement]:
         """Retrieve a list of |WebElement| objects as viewed by the Actor."""
@@ -89,7 +91,8 @@ class Target:
         try:
             return driver.find_elements(*self)
         except WebDriverException as e:
-            raise TargetingError(f"{e} raised while trying to find {self}.") from e
+            msg = f"{e} raised while trying to find {self}."
+            raise TargetingError(msg) from e
 
     def __repr__(self) -> str:
         """A Target is represented by its name."""
