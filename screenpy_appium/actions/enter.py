@@ -8,6 +8,8 @@ from appium.webdriver.webdriver import WebDriverException
 from screenpy.exceptions import DeliveryError, UnableToAct
 from screenpy.pacing import beat
 
+from ..common import pos_args_deprecated
+
 if TYPE_CHECKING:
     from screenpy import Actor
 
@@ -80,7 +82,8 @@ class Enter:
             )
             raise DeliveryError(msg) from e
 
-    def __init__(self, text: str, mask: bool = False) -> None:
+    @pos_args_deprecated("mask")
+    def __init__(self, text: str, mask: bool = False) -> None:  # noqa: FBT001, FBT002
         self.text = text
         self.target = None
 
