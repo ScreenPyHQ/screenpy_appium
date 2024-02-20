@@ -1,11 +1,15 @@
 """Investigate the text of an element or many elements."""
 
-from typing import List, Union
+from __future__ import annotations
 
-from screenpy import Actor
+from typing import TYPE_CHECKING, List, Union
+
 from screenpy.pacing import beat
 
-from ..target import Target
+if TYPE_CHECKING:
+    from screenpy import Actor
+
+    from ..target import Target
 
 
 class Text:

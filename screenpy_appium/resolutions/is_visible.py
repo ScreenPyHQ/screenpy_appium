@@ -1,5 +1,7 @@
 """Matches against a visible WebElement. (Yes, they're still WebElements on mobile.)."""
 
+from __future__ import annotations
+
 from screenpy.resolutions.base_resolution import BaseResolution
 
 from .custom_matchers import is_visible_element

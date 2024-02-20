@@ -1,10 +1,15 @@
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from unittest import mock
 
 import pytest
-from screenpy import Actor
 from screenpy.exceptions import UnableToAct
 
 from screenpy_appium.actions import Clear, Enter, Tap
+
+if TYPE_CHECKING:
+    from screenpy import Actor
 
 
 def get_mocked_target_and_element() -> tuple[mock.Mock, mock.Mock]:

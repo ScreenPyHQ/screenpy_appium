@@ -1,13 +1,17 @@
 """Enter text into an input field, or press keys."""
 
-from typing import Optional
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 
 from appium.webdriver.webdriver import WebDriverException
-from screenpy import Actor
 from screenpy.exceptions import DeliveryError, UnableToAct
 from screenpy.pacing import beat
 
-from ..target import Target
+if TYPE_CHECKING:
+    from screenpy import Actor
+
+    from ..target import Target
 
 
 class Enter:
@@ -24,17 +28,17 @@ class Enter:
         )
     """
 
-    target: Optional[Target]
+    target: Target | None
 
     @staticmethod
-    def the_text(text: str) -> "Enter":
+    def the_text(text: str) -> Enter:
         """Provide the text to enter into the field."""
         return Enter(text)
 
     the_keys = the_text
 
     @staticmethod
-    def the_secret(text: str) -> "Enter":
+    def the_secret(text: str) -> Enter:
         """
         Provide the text to enter into the field, but mask it in logging.
 
@@ -44,7 +48,7 @@ class Enter:
 
     the_password = the_secret
 
-    def into_the(self, target: Target) -> "Enter":
+    def into_the(self, target: Target) -> Enter:
         """Target the element to enter text into."""
         self.target = target
         return self

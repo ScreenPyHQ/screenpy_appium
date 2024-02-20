@@ -1,12 +1,16 @@
 """Investigate an attribute of a Target."""
 
-from typing import List, Optional, Union
+from __future__ import annotations
 
-from screenpy import Actor
+from typing import TYPE_CHECKING, List, Optional, Union
+
 from screenpy.exceptions import UnableToAnswer
 from screenpy.pacing import beat
 
-from ..target import Target
+if TYPE_CHECKING:
+    from screenpy import Actor
+
+    from ..target import Target
 
 
 class Attribute:

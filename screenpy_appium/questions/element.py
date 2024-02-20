@@ -1,13 +1,18 @@
 """Investigate an element on the browser page."""
 
-from typing import Optional
+from __future__ import annotations
 
-from screenpy import Actor
+from typing import TYPE_CHECKING, Optional
+
 from screenpy.pacing import beat
-from selenium.webdriver.remote.webelement import WebElement
 
 from ..exceptions import TargetingError
-from ..target import Target
+
+if TYPE_CHECKING:
+    from screenpy import Actor
+    from selenium.webdriver.remote.webelement import WebElement
+
+    from ..target import Target
 
 
 class Element:

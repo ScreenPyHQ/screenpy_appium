@@ -1,8 +1,13 @@
 """Enable an actor to use an Android device."""
 
-from appium.webdriver import Remote
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 
 from .use_a_mobile_device import UseAMobileDevice
+
+if TYPE_CHECKING:
+    from appium.webdriver import Remote
 
 
 class UseAnAndroidDevice(UseAMobileDevice):

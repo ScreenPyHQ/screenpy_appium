@@ -6,15 +6,19 @@ if the string begins with a "/" or a "(", it's probably an XPATH locator.
 Otherwise, the default is accessibility ID.
 """
 
-from typing import Iterator, List, Optional, Tuple, Union
+from __future__ import annotations
+
+from typing import TYPE_CHECKING, Iterator, List, Optional, Tuple, Union
 
 from appium.webdriver.common.appiumby import AppiumBy
 from appium.webdriver.webdriver import WebDriverException
-from appium.webdriver.webelement import WebElement
-from screenpy import Actor
 
 from .abilities import UseAMobileDevice
 from .exceptions import TargetingError
+
+if TYPE_CHECKING:
+    from appium.webdriver.webelement import WebElement
+    from screenpy import Actor
 
 
 class Target:

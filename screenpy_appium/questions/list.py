@@ -1,12 +1,16 @@
 """Investigate one or more elements."""
 
-from typing import List as ListType
+from __future__ import annotations
 
-from screenpy import Actor
+from typing import TYPE_CHECKING, List as ListType
+
 from screenpy.pacing import beat
-from selenium.webdriver.remote.webdriver import WebElement
 
-from ..target import Target
+if TYPE_CHECKING:
+    from screenpy import Actor
+    from selenium.webdriver.remote.webdriver import WebElement
+
+    from ..target import Target
 
 
 class List:

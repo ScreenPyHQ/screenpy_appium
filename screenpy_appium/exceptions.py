@@ -1,5 +1,7 @@
 """Exceptions used by ScreenPy Appium."""
 
+from __future__ import annotations
+
 from screenpy.exceptions import ScreenPyError
 
 

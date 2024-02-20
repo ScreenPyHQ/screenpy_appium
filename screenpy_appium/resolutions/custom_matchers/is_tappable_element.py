@@ -6,11 +6,15 @@ For example:
     assert_that(driver.find_element_by_id("search"), is_tappable_element())
 """
 
-from typing import Optional
+from __future__ import annotations
+
+from typing import TYPE_CHECKING, Optional
 
 from hamcrest.core.base_matcher import BaseMatcher
-from hamcrest.core.description import Description
 from selenium.webdriver.remote.webelement import WebElement
+
+if TYPE_CHECKING:
+    from hamcrest.core.description import Description
 
 
 class IsTappableElement(BaseMatcher[Optional[WebElement]]):

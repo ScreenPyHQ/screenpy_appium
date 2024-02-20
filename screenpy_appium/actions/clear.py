@@ -1,11 +1,17 @@
 """Clear text from an input."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
+
 from appium.webdriver.webdriver import WebDriverException
-from screenpy.actor import Actor
 from screenpy.exceptions import DeliveryError
 from screenpy.pacing import beat
 
-from ..target import Target
+if TYPE_CHECKING:
+    from screenpy.actor import Actor
+
+    from ..target import Target
 
 
 class Clear:
