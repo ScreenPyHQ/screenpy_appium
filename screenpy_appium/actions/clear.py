@@ -1,6 +1,4 @@
-"""
-Clear text from an input.
-"""
+"""Clear text from an input."""
 
 from appium.webdriver.webdriver import WebDriverException
 from screenpy.actor import Actor

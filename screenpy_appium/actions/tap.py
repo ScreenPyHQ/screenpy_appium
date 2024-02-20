@@ -1,6 +1,4 @@
-"""
-Tap on an element.
-"""
+"""Tap on an element."""
 
 from appium.webdriver.webdriver import WebDriverException
 from screenpy.actor import Actor

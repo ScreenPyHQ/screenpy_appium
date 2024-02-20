@@ -1,6 +1,4 @@
-"""
-Matches a tappable WebElement. (Yes, they're still WebElements on mobile.)
-"""
+"""Matches a tappable WebElement. (Yes, they're still WebElements on mobile.)."""
 
 from screenpy.resolutions.base_resolution import BaseResolution
 

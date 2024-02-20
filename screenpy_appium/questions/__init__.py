@@ -1,6 +1,4 @@
-"""
-Questions an Actor can ask about the state of a mobile application.
-"""
+"""Questions an Actor can ask about the state of a mobile application."""
 
 from .attribute import Attribute
 from .element import Element

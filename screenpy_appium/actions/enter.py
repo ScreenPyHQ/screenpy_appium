@@ -1,6 +1,4 @@
-"""
-Enter text into an input field, or press keys.
-"""
+"""Enter text into an input field, or press keys."""
 
 from typing import Optional
 
@@ -38,8 +36,9 @@ class Enter:
     @staticmethod
     def the_secret(text: str) -> "Enter":
         """
-        Provide the text to enter into the field, but mark that the text
-        should be masked in the log. The text will appear as "[CENSORED]".
+        Provide the text to enter into the field, but mask it in logging.
+
+        The text will appear as "[CENSORED]".
         """
         return Enter(text, mask=True)
 

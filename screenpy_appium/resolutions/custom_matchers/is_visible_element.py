@@ -1,5 +1,7 @@
 """
-A matcher that matches a visible element. For example:
+A matcher that matches a visible element.
+
+For example:
 
     assert_that(driver.find_element_by_id("search"), is_visible_element())
 """
@@ -12,9 +14,7 @@ from hamcrest.core.description import Description
 
 
 class IsVisibleElement(BaseMatcher[Optional[WebElement]]):
-    """
-    Matches an element whose ``is_displayed`` method returns True.
-    """
+    """Matches an element whose ``is_displayed`` method returns True."""
 
     def _matches(self, item: Optional[WebElement]) -> bool:
         """Whether the element is visible."""

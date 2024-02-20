@@ -92,14 +92,17 @@ class Target:
             raise TargetingError(f"{e} raised while trying to find {self}.") from e
 
     def __repr__(self) -> str:
+        """A Target is represented by its name."""
         return self.target_name
 
     __str__ = __repr__
 
     def __iter__(self) -> Iterator[str]:
+        """Allow Targets to be treated as ``(By, str)`` tuples."""
         return self.get_locator().__iter__()
 
     def __getitem__(self, index: int) -> str:
+        """Allow Targets to be treated as ``(By, str)`` tuples."""
         return self.get_locator()[index]
 
     def __init__(self, description: str) -> None:

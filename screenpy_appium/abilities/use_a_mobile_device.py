@@ -1,6 +1,7 @@
 """
-A common base class for the specific device abilities, which will help when
-using the Actor's `has_ability_to` and `uses_ability_to` methods.
+A common base class for the specific device abilities.
+
+This will help when using the Actor's `has_ability_to` and `uses_ability_to` methods.
 """
 
 from appium.webdriver import Remote
@@ -23,4 +24,6 @@ class UseAMobileDevice:
 
     driver: Remote
 
-    def forget(self) -> None: ...
+    def forget(self) -> None:
+        """Quit the attached driver."""
+        ...

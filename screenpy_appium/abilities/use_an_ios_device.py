@@ -1,6 +1,4 @@
-"""
-Enable an Actor to use an iOS device.
-"""
+"""Enable an Actor to use an iOS device."""
 
 from appium.webdriver import Remote
 
@@ -31,6 +29,7 @@ class UseAnIOSDevice(UseAMobileDevice):
         self.driver.quit()
 
     def __repr__(self) -> str:
+        """Represents ability to use ios driver."""
         return "Use an iOS device"
 
     def __init__(self, driver: Remote) -> None:

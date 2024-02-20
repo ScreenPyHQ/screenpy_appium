@@ -1,5 +1,7 @@
 """
-A matcher that matches a tappable element. For example:
+A matcher that matches a tappable element.
+
+For example:
 
     assert_that(driver.find_element_by_id("search"), is_tappable_element())
 """

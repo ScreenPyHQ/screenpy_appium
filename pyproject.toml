@@ -49,8 +49,8 @@ select = [
     "ARG",  # flake8-unused-arguments
     "B",  # flake8-bugbear
     "BLE",  # flake8-blind-except
-#    "C4",  # flake8-comprehensions
-#    "D",  # pydocstyle
+    "C4",  # flake8-comprehensions
+    "D",  # pydocstyle
     "E",  # pycodestyle error
 #    "EM",  # flake8-errmsg
 #    "ERA",  # eradicate
@@ -98,6 +98,7 @@ extend-safe-fixes = [
     "PT003", "PT006", "PT018",
     "RET504",
     "UP006", "UP007",
+    "W291",
 ]
 
 [tool.ruff.lint.flake8-pytest-style]
