@@ -132,7 +132,7 @@ split-on-trailing-comma = false
 
 [tool.poetry]
 name = "screenpy_appium"
-version = "0.0.1"
+version = "0.0.2"
 description = "ScreenPy extension that enables interacting with Appium."
 authors = ["Perry Goy <perry.goy@gmail.com>"]
 maintainers = ["Marcel Wilson"]
