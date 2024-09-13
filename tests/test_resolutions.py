@@ -47,7 +47,7 @@ class TestIsTappable:
         element.is_displayed.return_value = True
         ic = IsTappable()
 
-        assert ic._matches(element)
+        assert ic.resolve()._matches(element)
 
     def test_does_not_match_untapable_element(self) -> None:
         invisible_element = mock.Mock(spec=WebElement)
@@ -58,9 +58,9 @@ class TestIsTappable:
         inactive_element.is_enabled.return_value = False
         ic = IsTappable()
 
-        assert not ic._matches(None)  # element was not found by Element()
-        assert not ic._matches(invisible_element)
-        assert not ic._matches(inactive_element)
+        assert not ic.resolve()._matches(None)  # element was not found by Element()
+        assert not ic.resolve()._matches(invisible_element)
+        assert not ic.resolve()._matches(inactive_element)
 
     @mock.patch("appium.webdriver.webelement.WebElement", spec=WebElement)
     def test_descriptions(self, element: mock.MagicMock) -> None:
@@ -71,7 +71,7 @@ class TestIsTappable:
             describe_none="was not even present",
         )
 
-        _assert_descriptions(IsTappable(), element, expected)
+        _assert_descriptions(IsTappable().resolve(), element, expected)
 
 
 class TestIsVisible:
@@ -85,15 +85,15 @@ class TestIsVisible:
         element.is_displayed.return_value = True
         iv = IsVisible()
 
-        assert iv._matches(element)
+        assert iv.resolve()._matches(element)
 
     def test_does_not_match_invisible_element(self) -> None:
         invisible_element = mock.Mock(spec=WebElement)
         invisible_element.is_displayed.return_value = False
         iv = IsVisible()
 
-        assert not iv._matches(None)  # element was not found by Element()
-        assert not iv._matches(invisible_element)
+        assert not iv.resolve()._matches(None)  # element was not found by Element()
+        assert not iv.resolve()._matches(invisible_element)
 
     def test_descriptions(self) -> None:
         element = mock.Mock(spec=WebElement)
@@ -104,4 +104,4 @@ class TestIsVisible:
             describe_none="was not even present",
         )
 
-        _assert_descriptions(IsVisible(), element, expected)
+        _assert_descriptions(IsVisible().resolve(), element, expected)

@@ -2,12 +2,17 @@
 
 from __future__ import annotations
 
-from screenpy.resolutions.base_resolution import BaseResolution
+from typing import TYPE_CHECKING
+
+from screenpy import beat
 
 from .custom_matchers import is_tappable_element
 
+if TYPE_CHECKING:
+    from .custom_matchers.is_tappable_element import IsTappableElement
 
-class IsTappable(BaseResolution):
+
+class IsTappable:
     """Match on a tappable element.
 
     Abilities Required:
@@ -19,5 +24,11 @@ class IsTappable(BaseResolution):
         the_actor.should(See.the(Element(LOGIN_BUTTON), IsTappable()))
     """
 
-    line = "tappable"
-    matcher_function = is_tappable_element
+    def describe(self) -> str:
+        """Describe the Resolution's expectation."""
+        return "tappable"
+
+    @beat("... hoping it's tappable.")
+    def resolve(self) -> IsTappableElement:
+        """Produce the Matcher to make the assertion."""
+        return is_tappable_element()
