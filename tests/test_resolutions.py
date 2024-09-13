@@ -2,8 +2,8 @@ from dataclasses import dataclass
 from unittest import mock
 
 from appium.webdriver.webelement import WebElement
+from hamcrest.core.matcher import Matcher
 from hamcrest.core.string_description import StringDescription
-from screenpy.resolutions.base_resolution import BaseResolution
 
 from screenpy_appium.resolutions import IsTappable, IsVisible
 
@@ -17,7 +17,7 @@ class ExpectedDescriptions:
 
 
 def _assert_descriptions(
-    obj: BaseResolution, element: WebElement, expected: ExpectedDescriptions
+    obj: Matcher, element: WebElement, expected: ExpectedDescriptions
 ) -> None:
     describe_to = StringDescription()
     describe_match = StringDescription()
