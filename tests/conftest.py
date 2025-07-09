@@ -7,7 +7,7 @@ from screenpy import AnActor
 from screenpy_appium.abilities import UseAnAndroidDevice, UseAnIOSDevice
 
 
-@pytest.fixture()
+@pytest.fixture
 def AndroidTester() -> AnActor:
     """Provide an Actor with mocked web browsing abilities."""
     UseAnAndroidDevice_Mocked = mock.create_autospec(UseAnAndroidDevice, instance=True)
@@ -16,7 +16,7 @@ def AndroidTester() -> AnActor:
     return AnActor.named("Android Tester").who_can(UseAnAndroidDevice_Mocked)
 
 
-@pytest.fixture()
+@pytest.fixture
 def IOSTester() -> AnActor:
     """Provide an Actor with mocked web browsing abilities."""
     UseAnIOSDevice_Mocked = mock.create_autospec(UseAnIOSDevice, instance=True)

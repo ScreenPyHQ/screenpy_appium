@@ -65,7 +65,8 @@ class TestElement:
         assert isinstance(e, Element)
 
     def test_question_returns_none_if_no_element_found(
-        self, AndroidTester: Actor
+        self,
+        AndroidTester: Actor,
     ) -> None:
         test_target = Target.the("foo").located_by("//bar")
         mocked_driver = get_mocked_browser(AndroidTester)

@@ -7,7 +7,7 @@ ScreenPy Appium.
 
 ScreenPy Appium is an extension for ScreenPy, enabling interaction with Appium.
 
-:copyright: (c) 2022-2024, Perry Goy.
+:copyright: (c) 2022-2025, Perry Goy.
 :license: MIT, see LICENSE for more details.
 """
 

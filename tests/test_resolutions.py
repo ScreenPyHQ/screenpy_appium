@@ -17,7 +17,9 @@ class ExpectedDescriptions:
 
 
 def _assert_descriptions(
-    obj: Matcher, element: WebElement, expected: ExpectedDescriptions
+    obj: Matcher,
+    element: WebElement,
+    expected: ExpectedDescriptions,
 ) -> None:
     describe_to = StringDescription()
     describe_match = StringDescription()

@@ -8,12 +8,12 @@ from appium.webdriver.webdriver import WebDriverException
 from screenpy.exceptions import DeliveryError, UnableToAct
 from screenpy.pacing import beat
 
-from ..common import pos_args_deprecated
+from screenpy_appium.common import pos_args_deprecated
 
 if TYPE_CHECKING:
     from screenpy import Actor
 
-    from ..target import Target
+    from screenpy_appium.target import Target
 
 
 class Enter:
