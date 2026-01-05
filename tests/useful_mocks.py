@@ -14,7 +14,7 @@ if TYPE_CHECKING:
 
 def get_mock_target_class() -> type:
     class FakeTarget(Target):
-        def __new__(cls, *args: object, **kwargs: object) -> FakeTarget:  # noqa: ARG003
+        def __new__(cls, *args: object, **kwargs: object) -> FakeTarget:  # noqa: ARG004
             return mock.create_autospec(FakeTarget, instance=True)
 
     return FakeTarget
@@ -25,4 +25,4 @@ def get_mocked_webdriver() -> mock.Mock:
 
 
 def get_mocked_browser(actor: Actor) -> mock.Mock:
-    return cast(mock.Mock, actor.ability_to(UseAnAndroidDevice).driver)
+    return cast("mock.Mock", actor.ability_to(UseAnAndroidDevice).driver)

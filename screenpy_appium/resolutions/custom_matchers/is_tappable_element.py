@@ -31,13 +31,17 @@ class IsTappableElement(BaseMatcher[Optional[WebElement]]):
         description.append_text("the element is enabled/tappable")
 
     def describe_match(
-        self, _: WebElement | None, match_description: Description
+        self,
+        _: WebElement | None,
+        match_description: Description,
     ) -> None:
         """Describe the passing case, when it is unexpected."""
         match_description.append_text("it was enabled/tappable")
 
     def describe_mismatch(
-        self, item: WebElement | None, mismatch_description: Description
+        self,
+        item: WebElement | None,
+        mismatch_description: Description,
     ) -> None:
         """Describe the failing case."""
         if item is None or not item.is_displayed():

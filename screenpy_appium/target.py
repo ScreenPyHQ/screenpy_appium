@@ -8,7 +8,7 @@ Otherwise, the default is accessibility ID.
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Iterator
+from typing import TYPE_CHECKING
 
 from appium.webdriver.common.appiumby import AppiumBy
 from appium.webdriver.webdriver import WebDriverException
@@ -17,6 +17,8 @@ from .abilities import UseAMobileDevice
 from .exceptions import TargetingError
 
 if TYPE_CHECKING:
+    from collections.abc import Iterator
+
     from appium.webdriver.webelement import WebElement
     from screenpy import Actor
 
@@ -84,7 +86,8 @@ class Target:
         """Retrieve the |WebElement| as viewed by the Actor."""
         driver = the_actor.ability_to(UseAMobileDevice).driver
         try:
-            return driver.find_element(*self)
+            # bug in Selenium https://github.com/SeleniumHQ/selenium/issues/16035
+            return driver.find_element(*self)  # type: ignore[return-value]
         except WebDriverException as e:
             msg = f"{e} raised while trying to find {self}."
             raise TargetingError(msg) from e
@@ -93,7 +96,8 @@ class Target:
         """Retrieve a list of |WebElement| objects as viewed by the Actor."""
         driver = the_actor.ability_to(UseAMobileDevice).driver
         try:
-            return driver.find_elements(*self)
+            # bug in Selenium https://github.com/SeleniumHQ/selenium/issues/16035
+            return driver.find_elements(*self)  # type: ignore[return-value]
         except WebDriverException as e:
             msg = f"{e} raised while trying to find {self}."
             raise TargetingError(msg) from e

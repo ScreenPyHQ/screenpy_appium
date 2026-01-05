@@ -10,7 +10,7 @@ if TYPE_CHECKING:
     from appium.webdriver import WebElement
     from screenpy import Actor
 
-    from ..target import Target
+    from screenpy_appium.target import Target
 
 
 class List:

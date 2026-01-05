@@ -11,7 +11,7 @@ from screenpy.pacing import beat
 if TYPE_CHECKING:
     from screenpy.actor import Actor
 
-    from ..target import Target
+    from screenpy_appium.target import Target
 
 
 class Clear:

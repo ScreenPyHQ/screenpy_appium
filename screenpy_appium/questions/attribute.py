@@ -10,7 +10,7 @@ from screenpy.pacing import beat
 if TYPE_CHECKING:
     from screenpy import Actor
 
-    from ..target import Target
+    from screenpy_appium.target import Target
 
 
 class Attribute:
@@ -53,7 +53,8 @@ class Attribute:
 
     @beat('{} examines the "{attribute}" attribute of the {target}...')
     def answered_by(
-        self, the_actor: Actor
+        self,
+        the_actor: Actor,
     ) -> str | dict | list[str | dict | None] | None:
         """Direct the actor to investigate the attribute on the element."""
         if self.target is None:

@@ -6,13 +6,13 @@ from typing import TYPE_CHECKING
 
 from screenpy.pacing import beat
 
-from ..exceptions import TargetingError
+from screenpy_appium.exceptions import TargetingError
 
 if TYPE_CHECKING:
     from screenpy import Actor
     from selenium.webdriver.remote.webelement import WebElement
 
-    from ..target import Target
+    from screenpy_appium.target import Target
 
 
 class Element:
